@@ -2,6 +2,8 @@
 name: Build APK
 on:
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,6 +20,7 @@ jobs:
         run: |
           mkdir -p www/lib
           cp Urban_Routes_v16.html www/index.html
+          sed -i "s/const BUILD=0;/const BUILD=${{ github.run_number }};/" www/index.html
           i=0
           for url in $(grep -oE 'https://(cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)[^"]+\.js' www/index.html | sort -u); do
             i=$((i+1))
@@ -30,16 +33,27 @@ jobs:
             fi
           done
           npm init -y
-          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
+          npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6 @capacitor/browser@6
           echo '{"appId":"com.urbanroutes.game","appName":"Urban Routes","webDir":"www"}' > capacitor.config.json
           npx cap add android
           npx cap sync android
+      - name: Assinatura fixa
+        run: |
+          mkdir -p ~/.android
+          if [ -f debug.keystore ]; then cp debug.keystore ~/.android/debug.keystore; echo "Chave fixa em uso"; else echo "AVISO: sem debug.keystore"; fi
       - name: Gerar APK
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
+      - name: Preparar arquivo
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk UrbanRoutes.apk
       - uses: actions/upload-artifact@v4
         with:
           name: urban-routes-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          path: UrbanRoutes.apk
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Urban Routes ${{ github.run_number }}
+          files: UrbanRoutes.apk
