@@ -21,8 +21,13 @@ jobs:
           i=0
           for url in $(grep -oE 'https://(cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)[^"]+\.js' www/index.html | sort -u); do
             i=$((i+1))
-            curl -sfL "$url" -o "www/lib/$i.js"
-            sed -i "s|$url|lib/$i.js|g" www/index.html
+            if curl -fsSL "$url" -o "www/lib/$i.js"; then
+              sed -i "s|$url|lib/$i.js|g" www/index.html
+              echo "OK $url"
+            else
+              echo "FALHOU $url"
+              rm -f "www/lib/$i.js"
+            fi
           done
           npm init -y
           npm install @capacitor/core@6 @capacitor/cli@6 @capacitor/android@6
