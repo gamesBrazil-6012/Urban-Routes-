@@ -113,6 +113,39 @@ input:focus,select:focus,#bkt:focus{outline:2px solid var(--ac);border-color:tra
 .mc:hover,.mc:active{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 12px 30px #ffc40026}
 .seg{border-radius:14px;border-color:var(--br)}
 </style>
+<style id="skin2">
+/* ===== v19: menu novo (grade de blocos) ===== */
+#menu #mp{display:grid!important;grid-template-columns:repeat(6,1fr);gap:10px;width:min(700px,62vw);align-content:center;justify-items:stretch;text-align:left;margin:0}
+#mp>.lg,#mp>#z9p,#mp>.mrow{grid-column:span 6}
+#mp>#mny{grid-column:span 3}#mp>#acc{grid-column:span 3;justify-self:end}
+#mp>.mb{grid-column:span 2;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:3px;min-height:78px;padding:12px 14px;position:relative;overflow:hidden}
+#mp>.mb b{flex:none;font-size:15px;letter-spacing:.5px}
+#mp>.mb .n{font-size:20px;line-height:1;position:absolute;top:10px;right:12px;opacity:.85}
+#mp>.mb:nth-of-type(1),#mp>.mb:nth-of-type(2){grid-column:span 3;min-height:104px}
+#mp>.mb:nth-of-type(1) b,#mp>.mb:nth-of-type(2) b{font-size:23px;letter-spacing:1.5px}
+#mp>.mb:nth-of-type(1){border-left-color:#fff3b0}
+#mp>.mb:nth-of-type(2){background:linear-gradient(135deg,#2f74ff,#17306b);border:1px solid #8fb4ff;border-left:4px solid #bcd3ff;box-shadow:0 0 26px #2f74ff55,0 6px 18px #0007}
+#mp>.mb:nth-of-type(2) b{color:#fff}#mp>.mb:nth-of-type(2) .n,#mp>.mb:nth-of-type(2) small{color:#cfe0ff}
+#mp>.mb:nth-of-type(3){border-left-color:#31c48d}#mp>.mb:nth-of-type(4){border-left-color:#b07cff}#mp>.mb:nth-of-type(5){border-left-color:#7fa8ff}
+#mp>.mb:nth-of-type(6),#mp>.mb:nth-of-type(7){grid-column:span 3;flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;min-height:54px}
+#mp>.mb:nth-of-type(6){border-left-color:#ff8a4c}#mp>.mb:nth-of-type(7){border-left-color:#ff5fa2}
+#mp>.mb:nth-of-type(6) .n,#mp>.mb:nth-of-type(7) .n{position:static}
+#mp>.mb:nth-of-type(6) small{margin-left:auto}
+#mp>.mb:nth-of-type(8){grid-column:span 6;flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;min-height:42px;padding:8px 14px;border-left-color:#e5484d;background:linear-gradient(90deg,#2a1519e6,#120b10e6)}
+#mp>.mb:nth-of-type(8) .n{position:static}
+#mp .mrow .mb{border-radius:14px;min-height:44px}
+/* multiplayer */
+#mp1 .mh h2{font-size:26px;letter-spacing:7px;text-shadow:0 0 18px #ffc40066}
+#mp1 .mmode{gap:16px}
+#mp1 .mc{min-height:190px;padding:20px;border-radius:20px}
+#mp1 .mc b{font-size:28px;letter-spacing:5px}
+#mp1 .mc span{font-size:13px}
+#mp1 .mc:first-child{background:linear-gradient(150deg,#21459a,#0a1226 70%);border-color:#4f7be0}
+#mp1 .mc.c{background:linear-gradient(150deg,#8a2230,#130a10 70%);border-color:#d8505f}
+#mp1 .mc svg{width:78px;height:78px;top:30px;opacity:1;filter:drop-shadow(0 0 10px currentColor)}
+#mp1 .mc em{font-size:11px;letter-spacing:3px}
+#mp1 .msr button,#mpc .msr button{border-radius:14px}
+</style>
 </head><body>
 <div id="rot"><div class="rph"></div>Vire a tela para jogar<br>Urban Routes</div>
 <div class="scr on" id="menu"><div id="mbg"><div id="sk1"></div><div id="sk2"></div><div id="rd"></div><div id="mbus"><svg viewBox="0 0 400 150"><g class="bob"><rect x="6" y="14" width="388" height="102" rx="16" fill="#2a6fdb"/><rect x="6" y="84" width="388" height="14" fill="#ffc400"/><rect x="22" y="28" width="300" height="42" rx="6" fill="#bfe3ff"/><path d="M22 28h300v14H22z" fill="#fff" opacity=".25"/><g stroke="#2a6fdb" stroke-width="4"><path d="M92 28v42M162 28v42M232 28v42M302 28v42"/></g><rect x="332" y="28" width="52" height="60" rx="6" fill="#8fd0ff"/><rect x="340" y="20" width="40" height="8" rx="2" fill="#0b1220"/><rect x="344" y="22" width="32" height="4" fill="#ffc400"/><rect x="384" y="86" width="12" height="9" rx="3" fill="#fff6c8"/><path d="M396 90l60 -16v40z" fill="#fff6c8" opacity=".12"/><rect x="2" y="86" width="8" height="9" fill="#ff3b30"/><g class="wl"><circle cx="76" cy="118" r="21" fill="#111"/><circle cx="76" cy="118" r="11" fill="#8a93a6"/><path d="M76 107v22M65 118h22" stroke="#111" stroke-width="3"/></g><g class="wl"><circle cx="318" cy="118" r="21" fill="#111"/><circle cx="318" cy="118" r="11" fill="#8a93a6"/><path d="M318 107v22M307 118h22" stroke="#111" stroke-width="3"/></g></g></svg></div></div>
@@ -202,7 +235,8 @@ B(2.6,2.5,11,col,0,1.9,0);B(2.64,.9,9.4,0x1b2a3a,0,2.5,.3);B(2.3,1.1,.06,0x2a3d5
 for(const sx of[-1,1])for(const sz of[-3.6,3.6]){const w=new THREE.Mesh(new THREE.CylinderGeometry(.55,.55,.3,12),M(0x111111));w.rotation.z=Math.PI/2;w.position.set(sx*1.3,.55,sz);g.add(w)}
 if(me){B(2.5,.1,10.8,0x555a62,0,.75,0);B(2.4,.8,.9,0x22262c,0,1.5,-4.8);B(.1,1.4,.1,0x888,-1.2,2.7,-5.4);B(.1,1.4,.1,0x888,1.2,2.7,-5.4);
 for(const sx of[-1,1]){B(.05,.9,10.8,0x7a8088,sx*1.27,1.2,0);for(let r=0;r<6;r++){B(.9,.5,.7,0x2b4a8a,sx*.85,1.1,-1+r*1.4);B(.9,.9,.15,0x2b4a8a,sx*.85,1.6,-.7+r*1.4)}}
-const wg=new THREE.Group();wg.position.set(-.7,2,-4.1);wg.rotation.x=-.7;wheel3=new THREE.Mesh(new THREE.TorusGeometry(.28,.04,8,20),M(0x111111));const sp=new THREE.Mesh(new THREE.BoxGeometry(.5,.04,.04),M(0x111111));wheel3.add(sp);wg.add(wheel3);g.add(wg)}
+const wg=new THREE.Group();wg.position.set(-.7,2,-4.1);wg.rotation.x=-.7;wheel3=new THREE.Mesh(new THREE.TorusGeometry(.28,.04,8,20),M(0x111111));wheel3.geometry=new THREE.TorusGeometry(.3,.055,10,28);wheel3.material=M(0x16181d);const sp=new THREE.Mesh(new THREE.BoxGeometry(.56,.05,.05),M(0x23272e));wheel3.add(sp);const sp2=new THREE.Mesh(new THREE.BoxGeometry(.05,.3,.05),M(0x23272e));sp2.position.y=-.15;wheel3.add(sp2);const hub=new THREE.Mesh(new THREE.CylinderGeometry(.09,.09,.06,16),M(0x3a4049));hub.rotation.x=Math.PI/2;wheel3.add(hub);wg.add(wheel3);g.add(wg)}
+{const E=(w,hh,d,c,px,py,pz)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,hh,d),new THREE.MeshBasicMaterial({color:c}));o.position.set(px,py,pz);g.add(o)};for(const sx of[-1,1]){E(.5,.28,.08,0xfff4c2,sx*.95,1.0,-5.54);E(.4,.18,.08,0xff2a2a,sx*1.0,1.1,5.54);B(.08,.5,.35,0x15191f,sx*1.52,2.4,-5.0)}B(2.7,.3,.5,0x1a1d22,0,.65,-5.6);B(2.7,.3,.5,0x1a1d22,0,.65,5.6);B(2.66,.3,10.6,0x16191e,0,.8,0);E(1.6,.2,.06,0xffa31a,0,3.1,-5.55);B(1.6,.3,2.4,0xdfe3ea,0,3.4,1.5);B(1.2,.25,1.6,0xdfe3ea,0,3.35,-1.8)}
 return g}
 const TX=(w,h,f)=>{const c=document.createElement('canvas');c.width=w;c.height=h;f(c.getContext('2d'),w,h);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t},
 nz=(x,w,h,n)=>{for(let i=0;i<n;i++){x.fillStyle='rgba(0,0,0,'+Math.random()*.14+')';x.fillRect(Math.random()*w,Math.random()*h,2,2)}},
@@ -466,7 +500,7 @@ mc.clearRect(0,0,120,120);mc.fillStyle='#000a';mc.fillRect(0,0,120,120);const sc
 const P=p=>{const dx=p[0]-x,dz=p[1]-z;return[60+(dx*c-dz*s)*sc,60+(dx*s+dz*c)*sc]};
 garMM(P);mc.strokeStyle='#ffc400';mc.lineWidth=3;mc.beginPath();pts.forEach((p,i)=>{const q=P(p);i?mc.lineTo(q[0],q[1]):mc.moveTo(q[0],q[1])});mc.stroke();
 const e=P(phase<2?stp:end),f2=P(gas);mc.fillStyle='#6f6';mc.fillRect(f2[0]-3,f2[1]-3,6,6);mc.fillStyle=phase<2?'#4af':'#f44';mc.fillRect(e[0]-3,e[1]-3,6,6);
-OT.forEach(o=>{if(!o.b)return;const q=P([o.b.position.x,o.b.position.z]);mc.fillStyle=hx(o.c);mc.fillRect(q[0]-3,q[1]-3,6,6)});
+OT.forEach(o=>{if(!o.b)return;const wx=o.b.position.x,wz=o.b.position.z;if(o.px!=null){const mx=wx-o.px,mz=wz-o.pz;if(mx*mx+mz*mz>.04){o.ax=mx;o.az=mz}}o.px=wx;o.pz=wz;const q=P([wx,wz]),dx=o.ax||0,dz=o.az||-1,sx=dx*c-dz*s,sy=dx*s+dz*c;mc.save();mc.translate(q[0],q[1]);mc.rotate(Math.atan2(sx,-sy));mc.fillStyle='#000';mc.fillRect(-4.5,-8.5,9,17);mc.fillStyle=hx(o.c);mc.fillRect(-3.5,-7.5,7,15);mc.fillStyle='#cfe8ff';mc.fillRect(-2.5,-6,5,2.5);mc.fillRect(-2.5,-2,5,2);mc.fillRect(-2.5,2,5,2);mc.fillStyle='#fff';mc.fillRect(-3.5,-7.5,7,1.5);mc.restore()});
 mc.fillStyle='#fff';mc.beginPath();mc.moveTo(60,52);mc.lineTo(65,66);mc.lineTo(55,66);mc.fill()}
 function tick(ts){if(!run)return;requestAnimationFrame(tick);const rw=(ts-last)/1000,dt=Math.min(rw,.05);last=ts;fa+=rw;fc++;if(fa>=1){fpv=fc/fa;fa=fc=0;if(cfg.q==0){if(fpv<38&&pr>.55)pr-=.15;else if(fpv>57&&pr<prMax)pr=Math.min(prMax,pr+.1);ren.setPixelRatio(pr);resize()}}update(dt);eUp();rainUp(dt);hud();if(cfg.q==3)rfUp();ren.render(scene,cam)}
 act.onclick=()=>{if(phase==3||phase==11)phase=4;else if(phase!=2&&phase!=8)phase++};
