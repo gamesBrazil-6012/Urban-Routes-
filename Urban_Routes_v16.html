@@ -90,10 +90,33 @@ html,body{height:100svh}.scr,#g,#hud{inset:0 0 auto 0;height:100svh}
 .pf{display:flex;align-items:center;gap:12px}.pfb{background:#2a3750;border:1px solid #3b4a68;border-radius:8px;padding:8px 12px;font-size:13px}
 .fl{width:min(460px,94vw);display:flex;flex-direction:column;gap:6px;max-height:34vh;overflow:auto}.fi{display:flex;align-items:center;gap:10px;background:#16203599;border:1px solid #2c3b5c;border-radius:10px;padding:7px 10px;text-align:left}.fi span{font-size:11px;color:#9fb0cf}.fi button{padding:6px 10px;font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#667;margin-right:6px}.dot.g{background:#3ddc84}
 #af,#pp,#mp0{overflow:auto;justify-content:flex-start;padding-top:12px}
-#acc:empty,#acc1:empty{display:none}#bkt{user-select:text;-webkit-user-select:text;touch-action:manipulation;background:#fff;color:#111;border-radius:10px;border:0;padding:10px;font:12px monospace}</style></head><body>
+#acc:empty,#acc1:empty{display:none}#bkt{user-select:text;-webkit-user-select:text;touch-action:manipulation;background:#fff;color:#111;border-radius:10px;border:0;padding:10px;font:12px monospace}</style><style id="skin">
+/* ===== v18: visual novo ===== */
+:root{--ac:#ffc400;--ac2:#ff8a00;--gl:rgba(18,27,44,.74);--br:rgba(255,255,255,.1)}
+*{scrollbar-width:none}
+.scr:not(#menu){background:radial-gradient(120% 90% at 12% 0%,#23375f 0%,#111a2d 48%,#070b13 100%)}
+.scr:not(#menu)::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#ffffff06 0 2px,transparent 2px 28px);pointer-events:none}
+.scr.on{animation:v18in .35s cubic-bezier(.2,.8,.2,1)}@keyframes v18in{from{opacity:0;transform:scale(.985)}}
+.scr h2{font-size:22px;letter-spacing:4px;text-transform:uppercase;background:linear-gradient(90deg,#fff,#ffd96a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.scr h2::after{content:"";display:block;height:3px;width:56px;margin:7px auto 0;border-radius:3px;background:linear-gradient(90deg,var(--ac),var(--ac2))}
+button{border-radius:14px;border:1px solid #ffe08a99;background:linear-gradient(180deg,#ffd84d,#ffab00);box-shadow:0 4px 0 #8f5f00,0 10px 24px #ffb30033;font-weight:800;letter-spacing:.6px;padding:12px 18px}
+button.g{background:linear-gradient(180deg,#2a3956,#1a2539);border:1px solid var(--br);box-shadow:0 4px 0 #090d16,0 10px 24px #0005;color:#eaf0ff}
+input,select,#bkt{background:#0e1626;color:#fff;border:1px solid #324464;border-radius:12px;padding:11px 14px}
+input::placeholder{color:#6f7f9e}
+input:focus,select:focus,#bkt:focus{outline:2px solid var(--ac);border-color:transparent}
+.card{border-radius:16px;border:1px solid var(--br);background:linear-gradient(180deg,#202e4acc,#121b2ecc);box-shadow:0 10px 24px #0006}
+.set{border-radius:14px;background:var(--gl);border:1px solid var(--br);padding:10px 14px;backdrop-filter:blur(6px)}
+.chip{background:var(--gl);border:1px solid #ffc40066;border-radius:999px;backdrop-filter:blur(6px)}
+#mp .mb{border-radius:14px;border:1px solid var(--br);border-left:4px solid var(--ac);background:linear-gradient(90deg,#1b2a47e6,#101828e6);backdrop-filter:blur(8px);box-shadow:0 6px 18px #0006}
+#mp .mb:active{transform:scale(.985)}
+.mc{border-radius:18px;background:linear-gradient(160deg,#1a2540,#0c1322);border:1px solid var(--br);box-shadow:0 10px 26px #0007}
+.mc:hover,.mc:active{border-color:var(--ac);box-shadow:0 0 0 1px var(--ac),0 12px 30px #ffc40026}
+.seg{border-radius:14px;border-color:var(--br)}
+</style>
+</head><body>
 <div id="rot"><div class="rph"></div>Vire a tela para jogar<br>Urban Routes</div>
 <div class="scr on" id="menu"><div id="mbg"><div id="sk1"></div><div id="sk2"></div><div id="rd"></div><div id="mbus"><svg viewBox="0 0 400 150"><g class="bob"><rect x="6" y="14" width="388" height="102" rx="16" fill="#2a6fdb"/><rect x="6" y="84" width="388" height="14" fill="#ffc400"/><rect x="22" y="28" width="300" height="42" rx="6" fill="#bfe3ff"/><path d="M22 28h300v14H22z" fill="#fff" opacity=".25"/><g stroke="#2a6fdb" stroke-width="4"><path d="M92 28v42M162 28v42M232 28v42M302 28v42"/></g><rect x="332" y="28" width="52" height="60" rx="6" fill="#8fd0ff"/><rect x="340" y="20" width="40" height="8" rx="2" fill="#0b1220"/><rect x="344" y="22" width="32" height="4" fill="#ffc400"/><rect x="384" y="86" width="12" height="9" rx="3" fill="#fff6c8"/><path d="M396 90l60 -16v40z" fill="#fff6c8" opacity=".12"/><rect x="2" y="86" width="8" height="9" fill="#ff3b30"/><g class="wl"><circle cx="76" cy="118" r="21" fill="#111"/><circle cx="76" cy="118" r="11" fill="#8a93a6"/><path d="M76 107v22M65 118h22" stroke="#111" stroke-width="3"/></g><g class="wl"><circle cx="318" cy="118" r="21" fill="#111"/><circle cx="318" cy="118" r="11" fill="#8a93a6"/><path d="M318 107v22M307 118h22" stroke="#111" stroke-width="3"/></g></g></svg></div></div>
-<div id="mp"><div class="lg"><svg viewBox="0 0 64 64"><rect x="4" y="12" width="56" height="34" rx="8" fill="#ffc400"/><rect x="10" y="18" width="36" height="14" rx="3" fill="#10151f"/><rect x="49" y="18" width="7" height="22" rx="2" fill="#10151f"/><circle cx="19" cy="48" r="7" fill="#10151f" stroke="#ffc400" stroke-width="3"/><circle cx="45" cy="48" r="7" fill="#10151f" stroke="#ffc400" stroke-width="3"/></svg><div><h1>URBAN ROUTES</h1><div class="tg">Simulador de ônibus · V13</div></div></div>
+<div id="mp"><div class="lg"><svg viewBox="0 0 64 64"><rect x="4" y="12" width="56" height="34" rx="8" fill="#ffc400"/><rect x="10" y="18" width="36" height="14" rx="3" fill="#10151f"/><rect x="49" y="18" width="7" height="22" rx="2" fill="#10151f"/><circle cx="19" cy="48" r="7" fill="#10151f" stroke="#ffc400" stroke-width="3"/><circle cx="45" cy="48" r="7" fill="#10151f" stroke="#ffc400" stroke-width="3"/></svg><div><h1>URBAN ROUTES</h1><div class="tg">Simulador de ônibus</div></div></div>
 <div class="chip" id="mny"></div><div class="chip" id="acc"></div>
 <button class="mb" onclick="show('rts')"><span class="n">01</span><b>Jogar</b><small>Offline</small></button>
 <button class="mb" onclick="SO.gate(()=>show('mp1'))"><span class="n">02</span><b>Multiplayer</b><small>Rota · Corrida</small></button>
