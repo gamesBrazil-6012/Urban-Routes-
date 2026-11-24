@@ -37,13 +37,39 @@ jobs:
           echo '{"appId":"com.urbanroutes.game","appName":"Urban Routes","webDir":"www"}' > capacitor.config.json
           npx cap add android
           npx cap sync android
-      - name: Icone e paisagem
+      - name: Icone, paisagem e tela cheia
         run: |
           M=android/app/src/main/AndroidManifest.xml
           sed -i 's/<activity/<activity android:screenOrientation="sensorLandscape"/' $M
           sed -i 's/<application/<application android:appCategory="game"/' $M
           S=android/app/src/main/res/values/styles.xml
-          sed -i 's|<style name="AppTheme.NoActionBar"\(.*\)>|&\n        <item name="android:windowFullscreen">true</item>|' $S
+          sed -i 's|<style name="AppTheme.NoActionBar"\(.*\)>|&\n        <item name="android:windowFullscreen">true</item>\n        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>|' $S
+          cat > android/app/src/main/java/com/urbanroutes/game/MainActivity.java <<'EOF'
+          package com.urbanroutes.game;
+          import android.os.Bundle;
+          import androidx.core.view.WindowCompat;
+          import androidx.core.view.WindowInsetsCompat;
+          import androidx.core.view.WindowInsetsControllerCompat;
+          import com.getcapacitor.BridgeActivity;
+          public class MainActivity extends BridgeActivity {
+            @Override
+            public void onCreate(Bundle b) {
+              super.onCreate(b);
+              hideBars();
+            }
+            @Override
+            public void onWindowFocusChanged(boolean f) {
+              super.onWindowFocusChanged(f);
+              if (f) hideBars();
+            }
+            private void hideBars() {
+              WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+              WindowInsetsControllerCompat c = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+              c.hide(WindowInsetsCompat.Type.systemBars());
+              c.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            }
+          }
+          EOF
           if [ -f icon.png ]; then
             command -v convert >/dev/null || sudo apt-get install -y imagemagick
             R=android/app/src/main/res
