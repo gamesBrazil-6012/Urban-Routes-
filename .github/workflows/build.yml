@@ -37,6 +37,24 @@ jobs:
           echo '{"appId":"com.urbanroutes.game","appName":"Urban Routes","webDir":"www"}' > capacitor.config.json
           npx cap add android
           npx cap sync android
+      - name: Icone e paisagem
+        run: |
+          M=android/app/src/main/AndroidManifest.xml
+          sed -i 's/<activity/<activity android:screenOrientation="sensorLandscape"/' $M
+          sed -i 's/<application/<application android:appCategory="game"/' $M
+          S=android/app/src/main/res/values/styles.xml
+          sed -i 's|<style name="AppTheme.NoActionBar"\(.*\)>|&\n        <item name="android:windowFullscreen">true</item>|' $S
+          if [ -f icon.png ]; then
+            command -v convert >/dev/null || sudo apt-get install -y imagemagick
+            R=android/app/src/main/res
+            rm -rf $R/mipmap-anydpi-v26
+            for d in "mdpi 48" "hdpi 72" "xhdpi 96" "xxhdpi 144" "xxxhdpi 192"; do
+              set -- $d
+              convert icon.png -resize ${2}x${2} $R/mipmap-$1/ic_launcher.png
+              cp $R/mipmap-$1/ic_launcher.png $R/mipmap-$1/ic_launcher_round.png
+              rm -f $R/mipmap-$1/ic_launcher_foreground.png
+            done
+          fi
       - name: Assinatura fixa
         run: |
           mkdir -p ~/.android
